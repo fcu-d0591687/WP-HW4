@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+
+<body>
+
+<h2>選擇學院</h2>
+<select id="college-list" onchange="collegeChange()">
+
+</select>
+
+<h2>選擇科系<h2>
+<select id="form-list">
+
+</select>
+
+<p id="demo"></p>
+
+<script>
+
+var colleges = ["金融學院","人文社會學院","理學院"];
+var business = ["風保系","財金系"];
+var social = ["國文系","外文系"];
+var math = ["應數系","環工系","光電系"];
+
+var collegeElm = document.getElementById("college-list");
+var formElm = document.getElementById("form-list");
+
+populateData (collegeElm, colleges);
+
+function collegeChange(){
+	var selIndex = collegeElm.options[collegeElm.selectedIndex].value;
+	switch(selIndex){
+		case "0":
+			populateData(formElm, business);
+			break;
+		case "1":
+			populateData(formElm, social);
+			break;
+		case "2":
+			populateData(formElm, math);
+			break;
+		default:
+			console.log("無")
+	}
+}
+
+function populateData(selElm, data){
+	var options = "";
+	var i;
+	for(i=0;i < data.length;i++){
+		options = options + '<option value="'+i+'">' +data[i] + '</option>';
+		}
+
+	selElm.innerHTML = options;
+}
+</script>
+</body>
+
+</html>
